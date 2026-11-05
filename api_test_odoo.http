@@ -1,0 +1,57 @@
+@apiKey = x9DtsmKk8XaKlxpZ3XrumVl6EgyaKC4PBFzDy2d4CoY
+
+### Créer un contact
+POST https://flow.icones-soft.com/api/v1/contacts
+Content-Type: application/json
+X-API-Key: {{apiKey}}
+
+{
+    "name": "Jean Dupont",
+    "email": "jean@example.com",
+    "phone": "0123456789",
+    "mobile": "0612345678",
+    "company": "Ma Société"
+}
+
+###
+
+### Modifier un contact
+PUT https://flow.icones-soft.com/api/v1/contacts/70
+Content-Type: application/json
+X-API-Key: {{apiKey}}
+
+{
+    "name": "Jean Dupont Modifié",
+    "email": "jean.nouveau@example.com",
+    "phone": "0987654321"
+}
+
+###
+
+### Modifier partiellement un contact (PATCH)
+PATCH https://flow.icones-soft.com/api/v1/contacts/70
+Content-Type: application/json
+X-API-Key: {{apiKey}}
+
+{
+    "phone":"0666887429",
+    "mobile":"0666887429"
+}
+
+###
+
+### Lister les contacts
+GET https://flow.icones-soft.com/api/v1/contacts?limit=50&offset=0
+X-API-Key: {{apiKey}}
+
+###
+
+### Lister les contacts avec POST
+POST https://flow.icones-soft.com/api/v1/contacts/list
+Content-Type: application/json
+X-API-Key: {{apiKey}}
+
+{
+    "limit": 50,
+    "offset": 0
+}
