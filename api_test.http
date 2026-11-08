@@ -1,0 +1,49 @@
+### Créer un contact
+POST https://flow.icones-soft.com/api/v1/contacts
+Content-Type: application/json
+X-API-Key: x9DtsmKk8XaKlxpZ3XrumVl6EgyaKC4PBFzDy2d4CoY
+
+{
+    "name": "Jean Dupont",
+    "email": "jean@example.com",
+    "phone": "0123456789",
+    "mobile": "0612345678",
+    "company": "Ma Société"
+}
+
+###
+
+### Modifier un contact
+PUT https://flow.icones-soft.com/api/v1/contacts/1
+Content-Type: application/json
+X-API-Key: x9DtsmKk8XaKlxpZ3XrumVl6EgyaKC4PBFzDy2d4CoY
+
+{
+    "name": "Jean Dupont Modifié",
+    "email": "jean.nouveau@example.com",
+    "phone": "0987654321"
+}
+
+###
+
+### Modifier partiellement un contact (PATCH)
+PATCH https://flow.icones-soft.com/api/v1/contacts/1
+Content-Type: application/json
+X-API-Key: x9DtsmKk8XaKlxpZ3XrumVl6EgyaKC4PBFzDy2d4CoY
+
+{
+    "name": "Ben ALI 2",
+    "email": "jBen@example.com",
+    "company": "Ma Boite"
+}
+
+###
+
+### Modifier l'avatar d'un contact (avec image en base64)
+PATCH https://flow.icones-soft.com/api/v1/contacts/1
+Content-Type: application/json
+X-API-Key: x9DtsmKk8XaKlxpZ3XrumVl6EgyaKC4PBFzDy2d4CoY
+
+{
+    "image": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
+}
