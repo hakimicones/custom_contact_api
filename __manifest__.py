@@ -2,7 +2,12 @@
     "name": "Custom Contact API",
     "version": "1.0.0",
     "category": "Contacts",
-    "summary": "List and create contacts through an authenticated JSON API",
+    'description': """
+            Module de gestion des contacts pour la plateforme de gestion de déchets.           
+            - API REST pour inscription, authentification et gestion des profils
+        """,
+    "author": "A/Hakim NOUAS",
+    "summary": "List update and create  contacts through an authenticated JSON API",
     "depends": ["base"],
     "data": [],
     "installable": True,
