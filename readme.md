@@ -63,3 +63,18 @@ puis rattache le contact à celle-ci.
 Une création réussie retourne HTTP `201` et l'identifiant du contact. Les
 erreurs de validation retournent `400`, une authentification incorrecte `401`,
 un type de contenu incorrect `415`, et une erreur interne `500`.
+
+## Supprimer un contact
+
+Envoyez une requête `DELETE` avec l'identifiant du contact dans l'URL. La clé
+API doit être fournie dans l'en-tête `X-API-Key`. Cette route ne supprime que
+les contacts individuels, pas les entreprises.
+
+```bash
+curl -X DELETE "https://odoo.example.com/api/v1/contacts/123" \
+  -H "X-API-Key: VOTRE_CLE_API"
+```
+
+Une suppression réussie retourne HTTP `200` avec l'identifiant supprimé.
+Si le contact n'existe pas (ou si l'identifiant correspond à une entreprise),
+l'API retourne `404`.

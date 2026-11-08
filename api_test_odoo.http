@@ -6,8 +6,8 @@ Content-Type: application/json
 X-API-Key: {{apiKey}}
 
 {
-    "name": "Jean Dupont",
-    "email": "jean@example.com",
+    "name": "sarahh Dupont",
+    "email": "sarahh@example.com",
     "phone": "0123456789",
     "mobile": "0612345678",
     "company": "Ma Société"
@@ -55,3 +55,9 @@ X-API-Key: {{apiKey}}
     "limit": 50,
     "offset": 0
 }
+
+###
+
+### Supprimer un contact
+DELETE https://flow.icones-soft.com/api/v1/contacts/70
+X-API-Key: {{apiKey}}

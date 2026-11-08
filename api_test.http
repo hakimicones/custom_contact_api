@@ -47,3 +47,9 @@ X-API-Key: x9DtsmKk8XaKlxpZ3XrumVl6EgyaKC4PBFzDy2d4CoY
 {
     "image": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
 }
+
+###
+
+### Supprimer un contact
+DELETE https://flow.icones-soft.com/api/v1/contacts/1
+X-API-Key: x9DtsmKk8XaKlxpZ3XrumVl6EgyaKC4PBFzDy2d4CoY

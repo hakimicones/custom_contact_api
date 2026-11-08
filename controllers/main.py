@@ -468,3 +468,46 @@ class ContactApiController(http.Controller):
             },
             200,
         )
+
+    @http.route(
+        "/api/v1/contacts/<int:contact_id>",
+        type="http",
+        auth="public",
+        methods=["DELETE"],
+        csrf=False,
+    )
+    def delete_contact(self, contact_id, **kwargs):
+        if not self._is_authenticated():
+            return _json_response({"error": "Authentification invalide."}, 401)
+
+        try:
+            partner_model = request.env["res.partner"].sudo()
+            contact = partner_model.search(
+                [
+                    ("id", "=", contact_id),
+                    ("is_company", "=", False),
+                ],
+                limit=1,
+            )
+            if not contact:
+                return _json_response({"error": "Contact non trouvé."}, 404)
+
+            with request.env.cr.savepoint():
+                contact.unlink()
+        except (
+            AccessError,
+            PsycopgError,
+            UserError,
+            ValidationError,
+            ValueError,
+        ):
+            _logger.exception("Échec lors de la suppression d'un contact via l'API.")
+            return _json_response(
+                {"error": "Une erreur interne a empêché la suppression du contact."},
+                500,
+            )
+
+        return _json_response(
+            {"id": contact_id, "message": "Contact supprimé."},
+            200,
+        )
