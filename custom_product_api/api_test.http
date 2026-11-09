@@ -1,0 +1,18 @@
+@apiKey = VOTRE_CLE_API
+@baseUrl = https://odoo.example.com
+
+### Lister les produits
+GET {{baseUrl}}/api/v1/products?limit=50&offset=0
+X-API-Key: {{apiKey}}
+
+###
+
+### Lister les produits avec POST
+POST {{baseUrl}}/api/v1/products/list
+Content-Type: application/json
+X-API-Key: {{apiKey}}
+
+{
+    "limit": 50,
+    "offset": 0
+}

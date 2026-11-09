@@ -1,4 +1,5 @@
 @apiKey = x9DtsmKk8XaKlxpZ3XrumVl6EgyaKC4PBFzDy2d4CoY
+@productApiKey = 3780e5e1fb14ee67c5c6bddadb54f72308f3fdc60154cb5e8be18aa41748515a
 
 ### Créer un contact
 POST https://flow.icones-soft.com/api/v1/contacts
@@ -43,6 +44,12 @@ X-API-Key: {{apiKey}}
 ### Lister les contacts
 GET https://flow.icones-soft.com/api/v1/contacts?limit=50&offset=0
 X-API-Key: {{apiKey}}
+
+###
+
+### Lister les produits (GET)
+GET https://flow.icones-soft.com/api/v1/products?limit=50&offset=0
+X-API-Key: {{productApiKey}}
 
 ###
 
