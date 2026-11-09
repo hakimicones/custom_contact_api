@@ -480,6 +480,7 @@ class ContactApiController(http.Controller):
         if not self._is_authenticated():
             return _json_response({"error": "Authentification invalide."}, 401)
 
+        stage = "recherche"
         try:
             partner_model = request.env["res.partner"].sudo()
             contact = partner_model.search(
@@ -492,18 +493,35 @@ class ContactApiController(http.Controller):
             if not contact:
                 return _json_response({"error": "Contact non trouvé."}, 404)
 
+            stage = "suppression"
             with request.env.cr.savepoint():
                 contact.unlink()
-        except (
-            AccessError,
-            PsycopgError,
-            UserError,
-            ValidationError,
-            ValueError,
-        ):
+
+        except (AccessError, PsycopgError, UserError, ValidationError, ValueError) as error:
             _logger.exception("Échec lors de la suppression d'un contact via l'API.")
+            if isinstance(error, AccessError):
+                cause = "access"
+                advice = "Odoo a refusé l'accès à cette opération."
+            elif isinstance(error, PsycopgError):
+                cause = "database_constraint"
+                advice = (
+                    "La base de données a refusé l'opération, probablement à cause "
+                    "d'une donnée liée au contact."
+                )
+            elif isinstance(error, (UserError, ValidationError)):
+                cause = "odoo_rule"
+                advice = "Une règle métier Odoo empêche cette opération."
+            else:
+                cause = "invalid_value"
+                advice = "Une valeur inattendue a empêché cette opération."
+
             return _json_response(
-                {"error": "Une erreur interne a empêché la suppression du contact."},
+                {
+                    "error": "La suppression du contact a échoué.",
+                    "stage": stage,
+                    "cause": cause,
+                    "message": advice,
+                },
                 500,
             )
 

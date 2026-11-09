@@ -77,4 +77,6 @@ curl -X DELETE "https://odoo.example.com/api/v1/contacts/123" \
 
 Une suppression réussie retourne HTTP `200` avec l'identifiant supprimé.
 Si le contact n'existe pas (ou si l'identifiant correspond à une entreprise),
-l'API retourne `404`.
+l'API retourne `404`. En cas d'échec, la réponse `500` précise l'étape (`stage`)
+et une cause générale (`cause`), avec une piste de diagnostic. Le détail brut
+de l'erreur Odoo n'est pas exposé par l'API.
