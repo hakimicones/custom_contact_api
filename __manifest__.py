@@ -7,7 +7,7 @@
             - API REST pour inscription, authentification et gestion des profils
         """,
     "author": "A/Hakim NOUAS",
-    "summary": "List update deleteee  and create  contacts through an authenticated JSON API",
+    "summary": "List update delete ne marche pas encore  and create  contacts through an authenticated JSON API",
     "depends": ["base"],
     "data": [],
     "installable": True,
