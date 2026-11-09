@@ -510,7 +510,7 @@ class ContactApiController(http.Controller):
                 )
             elif isinstance(error, (UserError, ValidationError)):
                 cause = "odoo_rule"
-                advice = "Une règle métier Odoo empêche cette opération."
+                advice = str(error).strip() or "Une règle métier Odoo empêche cette opération."
             else:
                 cause = "invalid_value"
                 advice = "Une valeur inattendue a empêché cette opération."

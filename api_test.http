@@ -51,5 +51,5 @@ X-API-Key: x9DtsmKk8XaKlxpZ3XrumVl6EgyaKC4PBFzDy2d4CoY
 ###
 
 ### Supprimer un contact
-DELETE https://flow.icones-soft.com/api/v1/contacts/1
+DELETE https://flow.icones-soft.com/api/v1/contacts/70
 X-API-Key: x9DtsmKk8XaKlxpZ3XrumVl6EgyaKC4PBFzDy2d4CoY
